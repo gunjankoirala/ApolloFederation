@@ -32,4 +32,3 @@ dotenv.config();
 
   console.log(`User Service running at ${url}`);
 })();
-

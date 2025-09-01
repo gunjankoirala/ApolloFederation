@@ -18,5 +18,3 @@ export const todoSchema = gql`
     deleteTodo(id: Int!): Boolean!
   }
 `;
-
-
