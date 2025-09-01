@@ -17,7 +17,7 @@ const gateway = new ApolloGateway({
       url,
       willSendRequest({ request, context }: any) {
         if (context?.authHeader) {
-          request.http?.headers.set("Authorization", context.authHeader);
+          request.http?.headers.set("authorization", context.authHeader);
         }
       },
     });
@@ -32,5 +32,4 @@ startStandaloneServer(server, {
     const authHeader = req.headers.authorization ?? "";
     return { authHeader };
   },
-}).then(({ url }) => console.log(` Gateway running at ${url}`));
-
+}).then(({ url }) => console.log(`🚀 Gateway running at ${url}`));

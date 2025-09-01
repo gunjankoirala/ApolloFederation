@@ -7,6 +7,7 @@
     "strict": true,
     "skipLibCheck": true,
     "types": ["node"],
+    "baseUrl": "src",
     "noEmit": true
   },
   "include": ["src", "drizzle", "drizzle.config.ts"],

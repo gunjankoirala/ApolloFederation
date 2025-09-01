@@ -6,3 +6,5 @@ export const todos = mysqlTable("todos", {
   completed: boolean("completed").notNull().default(false),
   userId: varchar("user_id", { length: 255 }).notNull(),
 });
+
+

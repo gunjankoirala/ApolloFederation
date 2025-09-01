@@ -30,6 +30,6 @@ dotenv.config();
     },
   });
 
-  console.log(`🚀 User Service running at ${url}`);
+  console.log(`User Service running at ${url}`);
 })();
 

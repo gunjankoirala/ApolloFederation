@@ -32,4 +32,4 @@ startStandaloneServer(server, {
       return {};
     }
   },
-}).then(({ url }) => console.log(` Todo Service running at ${url}`));
+}).then(({ url }) => console.log(`Todo Service running at ${url}`));
