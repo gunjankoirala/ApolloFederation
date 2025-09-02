@@ -1,5 +1,5 @@
 import { getDB } from "../utils/db.js";
-import { users } from "../../drizzle/Schema.js";
+import { user } from "../../drizzle/Schema.js";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import * as bcrypt from "bcrypt";
@@ -8,14 +8,14 @@ import jwt from "jsonwebtoken";
 export const UserService = {
   getUserById: async (id: string) => {
     const db = await getDB();
-    const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user ? { id: user.id, email: user.email } : null;
+    const [result] = await db.select().from(user).where(eq(user.id, id));
+    return result ? { id: result.id, email: result.email } : null;
   },
 
   getUserByEmail: async (email: string) => {
     const db = await getDB();
-    const [user] = await db.select().from(users).where(eq(users.email, email));
-    return user;
+    const [result] = await db.select().from(user).where(eq(user.email, email));
+    return result;
   },
 
   register: async (email: string, password: string) => {
@@ -26,7 +26,7 @@ export const UserService = {
     const hashed = await bcrypt.hash(password, 10);
     const userId = uuidv4();
 
-    await db.insert(users).values({
+    await db.insert(user).values({
       id: userId,
       email,
       password: hashed,
@@ -36,16 +36,16 @@ export const UserService = {
   },
 
   login: async (email: string, password: string) => {
-    const user = await UserService.getUserByEmail(email);
-    if (!user) throw new Error("User not found");
+    const result = await UserService.getUserByEmail(email);
+    if (!result) throw new Error("User not found");
 
-    const valid = await bcrypt.compare(password, user.password);
+    const valid = await bcrypt.compare(password, result.password);
     if (!valid) throw new Error("Invalid password");
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
+    const token = jwt.sign({ userId: result.id }, process.env.JWT_SECRET!, {
       expiresIn: "1d",
     });
 
-    return { token, user: { id: user.id, email: user.email } };
+    return { token, user: { id: result.id, email: result.email } };
   },
 };

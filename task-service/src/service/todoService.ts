@@ -1,17 +1,17 @@
 import { getDB } from "../utils/db";
-import { todos } from "../../drizzle/schema";
+import { todo } from "../../drizzle/schema";
 import { eq, and } from "drizzle-orm";
 
 export const TodoService = {
   getTodos: async (userId: string) => {
     const db = await getDB();
-    return db.select().from(todos).where(eq(todos.userId, userId));
+    return db.select().from(todo).where(eq(todo.userId, userId));
   },
 
   addTodo: async (userId: string, title: string) => {
     const db = await getDB();
     const result = await db
-      .insert(todos)
+      .insert(todo)
       .values({ title, completed: false, userId })
       .$returningId();
 
@@ -19,13 +19,13 @@ export const TodoService = {
       throw new Error("Failed to insert todo");
     }
 
-    const [todo] = await db
+    const [todoItem] = await db
       .select()
-      .from(todos)
-      .where(eq(todos.id, result[0].id));
+      .from(todo)
+      .where(eq(todo.id, result[0].id));
 
-    if (!todo) throw new Error("Inserted todo not found");
-    return todo;
+    if (!todoItem) throw new Error("Inserted todo not found");
+    return todoItem;
   },
 
   updateTodo: async (
@@ -39,31 +39,31 @@ export const TodoService = {
     if (data.completed !== undefined) updateObj.completed = data.completed;
 
     await db
-      .update(todos)
+      .update(todo)
       .set(updateObj)
-      .where(and(eq(todos.id, id), eq(todos.userId, userId)));
+      .where(and(eq(todo.id, id), eq(todo.userId, userId)));
 
-    const [todo] = await db
+    const [updatedTodo] = await db
       .select()
-      .from(todos)
-      .where(and(eq(todos.id, id), eq(todos.userId, userId)));
+      .from(todo)
+      .where(and(eq(todo.id, id), eq(todo.userId, userId)));
 
-    if (!todo) throw new Error("Todo not found or not authorized");
-    return todo;
+    if (!updatedTodo) throw new Error("Todo not found or not authorized");
+    return updatedTodo;
   },
 
   deleteTodo: async (userId: string, id: number) => {
     const db = await getDB();
-    const [todo] = await db
+    const [todoItem] = await db
       .select()
-      .from(todos)
-      .where(and(eq(todos.id, id), eq(todos.userId, userId)));
+      .from(todo)
+      .where(and(eq(todo.id, id), eq(todo.userId, userId)));
 
-    if (!todo) return false;
+    if (!todoItem) return false;
 
     await db
-      .delete(todos)
-      .where(and(eq(todos.id, id), eq(todos.userId, userId)));
+      .delete(todo)
+      .where(and(eq(todo.id, id), eq(todo.userId, userId)));
 
     return true;
   },

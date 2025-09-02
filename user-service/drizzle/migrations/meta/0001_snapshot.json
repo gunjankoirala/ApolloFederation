@@ -1,11 +1,11 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "05833539-9c05-4200-b0b5-79684fc89b6c",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "6b78173f-5e0a-4d20-b9bf-91ba1c65767e",
+  "prevId": "05833539-9c05-4200-b0b5-79684fc89b6c",
   "tables": {
-    "users": {
-      "name": "users",
+    "user": {
+      "name": "user",
       "columns": {
         "id": {
           "name": "id",
@@ -40,7 +40,9 @@
   "views": {},
   "_meta": {
     "schemas": {},
-    "tables": {},
+    "tables": {
+      "\"users\"": "\"user\""
+    },
     "columns": {}
   },
   "internal": {

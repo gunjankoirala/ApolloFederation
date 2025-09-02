@@ -1,11 +1,11 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "b3a1eacd-7986-4103-b9f5-768253c4ad5f",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "fb459ec7-3761-406a-94a0-03e2f2754e54",
+  "prevId": "b3a1eacd-7986-4103-b9f5-768253c4ad5f",
   "tables": {
-    "todos": {
-      "name": "todos",
+    "todo": {
+      "name": "todo",
       "columns": {
         "id": {
           "name": "id",
@@ -40,8 +40,8 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "todos_id": {
-          "name": "todos_id",
+        "todo_id": {
+          "name": "todo_id",
           "columns": [
             "id"
           ]
@@ -54,7 +54,9 @@
   "views": {},
   "_meta": {
     "schemas": {},
-    "tables": {},
+    "tables": {
+      "\"todos\"": "\"todo\""
+    },
     "columns": {}
   },
   "internal": {
