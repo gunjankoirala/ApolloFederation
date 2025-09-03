@@ -1,12 +1,14 @@
 import { UserService } from "../service/userService.ts";
+import {UnAuthorizedError} from "../utils/error.js";
 
 export const userResolvers = {
   Query: {
-    me: async (_: any, __: any, context: any) => {
-      const userId = context.userId;
-      if (!userId) return null;
-      return UserService.getUserById(userId);
-    },
+  me: async (_: any, __: any, context: any) => {
+  const userId = context.userId;
+  if (!userId) throw new UnAuthorizedError("You must be logged in to view your profile");
+
+  return UserService.getUserById(userId);
+    }
   },
 
   Mutation: {
@@ -18,4 +20,4 @@ export const userResolvers = {
       return UserService.login(email, password);
     },
   },
-};
+}; 
