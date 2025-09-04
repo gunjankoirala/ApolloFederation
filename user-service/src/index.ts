@@ -1,7 +1,7 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import { userResolvers } from "./graphql/userResolver.ts";
-import { userSchema } from "./graphql/userSchema.ts";
+import { userResolvers } from "@GraphQl/userResolver";
+import { userSchema } from "@GraphQl/userSchema.ts";
 import { buildSubgraphSchema } from "@apollo/subgraph";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";

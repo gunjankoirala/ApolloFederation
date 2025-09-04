@@ -4,9 +4,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "node --loader ts-node/esm --experimental-specifier-resolution=node src/index.ts"
-,
-    "build": "tsc",
+    "dev": "nodemon --watch src --ext ts --exec tsx src/index.ts",
+    "build": "rm -rf dist && tsc && tsc-alias",
     "migrate": "npx drizzle-kit push",
     "generate-migration": "npx drizzle-kit generate"
   },

@@ -2,8 +2,8 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { buildSubgraphSchema } from "@apollo/subgraph";
 import * as dotenv from "dotenv";
-import { todoSchema } from "./graphql/todoSchema";
-import { todoResolvers } from "./graphql/todoResolver";
+import { todoSchema } from "@GraphQl/todoSchema";
+import { todoResolvers } from "@GraphQl/todoResolver";
 import jwt from "jsonwebtoken";
 
 dotenv.config();

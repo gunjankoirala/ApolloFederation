@@ -4,13 +4,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-  "dev": "node --loader ts-node/esm src/index.ts",
-  "start": "node dist/index.js",
-  "build": "tsc",
-  "create-migration": "npx drizzle-kit generate",
-  "migrate": "npx drizzle-kit push"
-}
-,
+   "dev": "nodemon --watch src --ext ts --exec tsx src/index.ts",
+    "start": "node dist/index.js",
+    "build": "rm -rf dist && tsc && tsc-alias",
+    "create-migration": "npx drizzle-kit generate",
+    "migrate": "npx drizzle-kit push"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -33,6 +32,7 @@
     "drizzle-kit": "^0.31.4",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.9.2"
   }
 }

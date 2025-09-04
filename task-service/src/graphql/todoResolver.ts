@@ -1,4 +1,4 @@
-import { TodoService } from "../service/todoService";
+import { TodoService } from "@Service/todoService";
 
 const requireUser = (context: any) => {
   if (!context?.userId) throw new Error("Unauthorized");

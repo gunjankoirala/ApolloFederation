@@ -1,7 +1,7 @@
-import { getDB } from "../utils/db";
-import { todo } from "../../drizzle/schema";
+import { getDB } from "@Database";
+import { todo } from "@Schema";
 import { eq, and } from "drizzle-orm";
-import {NotFoundError,FailedUpdateError,DeleteFailedError,UnAuthorizedError,} from "../utils/error";
+import {NotFoundError,FailedUpdateError,DeleteFailedError,UnAuthorizedError,} from "@Error";
 
 export const TodoService = {
   getTodos: async (userId: string) => {

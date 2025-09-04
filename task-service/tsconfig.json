@@ -7,8 +7,15 @@
     "strict": true,
     "skipLibCheck": true,
     "types": ["node"],
-    "baseUrl": "src",
-    "noEmit": true
+    "baseUrl": "./",
+    "noEmit": true,
+    "paths":{
+      "@Error":["src/utils/error.ts"],
+      "@Schema":["drizzle/schema.ts"],
+      "@Database":["src/utils/db.ts"],
+      "@Service/*":["src/service/*"],
+      "@GraphQl/*":["src/graphql/*"]
+    }
   },
   "include": ["src", "drizzle", "drizzle.config.ts"],
   "ts-node": {

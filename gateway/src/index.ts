@@ -32,4 +32,4 @@ startStandaloneServer(server, {
     const authHeader = req.headers.authorization ?? "";
     return { authHeader };
   },
-}).then(({ url }) => console.log(`🚀 Gateway running at ${url}`));
+}).then(({ url }) => console.log(` Gateway running at ${url}`));

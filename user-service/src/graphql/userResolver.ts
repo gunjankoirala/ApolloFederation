@@ -1,5 +1,5 @@
-import { UserService } from "../service/userService.ts";
-import {UnAuthorizedError} from "../utils/error.js";
+import { UserService } from "@Service/userService";
+import {UnAuthorizedError} from "@Error";
 
 export const userResolvers = {
   Query: {

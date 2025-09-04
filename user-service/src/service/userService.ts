@@ -1,10 +1,10 @@
-import { getDB } from "../utils/db.js";
-import { user } from "../../drizzle/Schema.js";
+import { getDB } from "@Database";
+import { user } from "@Schema";
 import { eq } from "drizzle-orm";
 import { v4 as uuidv4 } from "uuid";
 import * as bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import {NotFoundError,DuplicateUserError,EmailError,PasswordError,} from "../utils/error.js";
+import {NotFoundError,DuplicateUserError,EmailError,PasswordError,} from "@Error";
 
 export const UserService = {
   getUserById: async (id: string) => {
